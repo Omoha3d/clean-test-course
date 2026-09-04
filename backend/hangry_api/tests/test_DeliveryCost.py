@@ -26,12 +26,12 @@ def test_MiddleOfTheRoadItems():
   assert cost == 5
 
 def test_LittleItems():
-  #Arrange
-    order = MockSet()
-    order.add(MockModel(quantity=2))
-    order.add(MockModel(quantity=2))
-    delivery_distance = 3
+ #Arrange
+  order = MockSet()
+  order.add(MockModel(quantity=3))
+  order.add(MockModel(quantity=1))
+  delivery_distance = 2
   #Act
-    cost = Delivery.calculate(order,delivery_distance)
+  cost = Delivery.calculate(order, delivery_distance)
   #Assert
-    assert cost == 2.5
+  assert cost == 2.50
