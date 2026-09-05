@@ -6,6 +6,7 @@ on:
       - lesson-3
 jobs:
   deploy:
+    needs: [functional_test]
     runs-on: ubuntu-latest
     defaults:
       run:
