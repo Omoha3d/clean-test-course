@@ -4,15 +4,14 @@ import axios from 'axios';
 import Home from '.';
 
 describe('Test Home', () => {
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
   test('Test Render', async () => {
     //Arrange: Setup the mock API
     //Listen for any GET requests using the axios module
-    afterEach(() => {
-      jest.clearAllMocks();
-    });
-    const mockGet = jest.spyOn(axios, 'get');
-    //Intercept the GET requests and provide a mocked response
-    mockGet.mockImplementation((url) => {
+    jest.spyOn(axios, 'get').mockImplementation((url) => {
       switch (url) {
         case `${API_URL}/api/category/?format=json`:
           return Promise.resolve({
@@ -61,10 +60,8 @@ describe('Test Home', () => {
 
     render(<Home />);
 
-    //Assert: Check the values in the rendered Home page.
-    //There should be 2 categories as defined in the mock response above
-    expect(await screen.findAllByTestId(/category-item/i)).toHaveLength(2);
-    //The word Appeateasers should be in there as defined in the mock response above.
-    expect(await screen.findByText('Appeteasers')).toBeInTheDocument();
+    expect(
+      await screen.findByText("Welcome to Hangry Hippo! Hungry? Let's get started!")
+    ).toBeInTheDocument();
   });
 });

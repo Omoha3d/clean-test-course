@@ -21,6 +21,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:functional": "react-scripts test --watchAll=false",
+    "test:integration": "cypress run",
+    "test:all": "npm run test:functional && npm run test:integration",
     "test-coverage": "react-scripts test --coverage --watchAll=false",
     "eject": "react-scripts eject"
   },

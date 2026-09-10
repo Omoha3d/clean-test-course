@@ -13,8 +13,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: npm install
-      - name: Run functional tests
-        run: npm test -- --coverage --watchAll=false
+      - name: Run functional and integration tests
+        run: npm run test:all
   deploy:
     needs: [function_test]
     runs-on: ubuntu-latest
