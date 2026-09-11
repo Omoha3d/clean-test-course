@@ -16,7 +16,7 @@ jobs:
       - name: Run functional tests
         run: npm test -- --coverage --watchAll=false
   deploy:
-    needs: [function_test]
+    needs: [functional_test]
     runs-on: ubuntu-latest
     defaults:
       run:
