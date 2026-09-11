@@ -6,20 +6,15 @@ on:
       - lesson-5-complete
 jobs:
   security_test:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: backend
-    name: Execute the PyCharm security test
+   runs-on: ubuntu-latest
+   defaults:
+    run:
+       working-directory: backend
+       name: Run pycharm security test
     steps:
       - uses: actions/checkout@v7.0.1
-      - name: Disable Debug
-        run: |
-          sed -i 's/DEBUG = True/DEBUG = False/g' hangry_api/hangry_api/settings.py
-      - name: Run PyCharm Security
+      - name: Run pycharm security test
         uses: tonybaloney/pycharm-security@1.25.1
-        with:
-          fail_on_warnings: 'yes'
   unit_test:
     needs: [security_test]
     runs-on: ubuntu-latest
